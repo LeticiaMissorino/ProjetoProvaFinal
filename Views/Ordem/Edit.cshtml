@@ -1,0 +1,69 @@
+@model ProjetoFinal.Models.Ordem
+
+@{
+    ViewData["Title"] = "Edição";
+}
+
+<h2>Editar - Ordem</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="data" class="control-label"></label>
+                <input asp-for="data" class="form-control" />
+                <span asp-validation-for="data" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="qdte" class="control-label"></label>
+                <input asp-for="qdte" class="form-control" />
+                <span asp-validation-for="qdte" class="text-danger"></span>
+            </div>
+<div class="form-group">
+                  <label asp-for="cliente" class="control-label"></label>
+                 @Html.DropDownListFor(model => model.cliente, new SelectList(ViewBag.cliente, "ID", "nome")
+                                                                                 .Select(drp => new SelectListItem{
+                                                                                Text = drp.Text,
+                                                                                Value = drp.Value,
+                                                                                Selected = ( Model!=null) &&
+                                                                                (Model.cliente.ID == int.Parse(drp.Value))
+                                                                                }
+                                                                                )                                                                              
+                                                                       
+                                                                                , new { @class = "form-control" }
+                                                                                 )
+                <span asp-validation-for="cliente" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                  <label asp-for="produto" class="control-label"></label>
+                 @Html.DropDownListFor(model => model.produto, new SelectList(ViewBag.produto, "ID", "nome")
+                                                                                 .Select(drp => new SelectListItem{
+                                                                                Text = drp.Text,
+                                                                                Value = drp.Value,
+                                                                                Selected = ( Model!=null) &&
+                                                                                (Model.produto.ID == int.Parse(drp.Value))
+                                                                                }
+                                                                                )
+                                                                                , new { @class = "form-control" }
+                                                                                 )
+                <span asp-validation-for="produto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

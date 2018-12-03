@@ -1,0 +1,51 @@
+@model ProjetoFinal.Models.AnaliseQualidade
+
+@{
+    ViewData["Title"] = "Novo";
+}
+
+<h2>Novo</h2>
+
+<h4>Analise de Qualidade</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="data" class="control-label"></label>
+                <input asp-for="data" class="form-control" />
+                <span asp-validation-for="data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="aprovado" /> @Html.DisplayNameFor(model => model.aprovado)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="responsavel" class="control-label"></label>
+                <input asp-for="responsavel" class="form-control" />
+                <span asp-validation-for="responsavel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                  <label asp-for="ordem" class="control-label"></label>
+                 @Html.DropDownListFor(model => model.ordem, new SelectList(ViewBag.ordem, "ID", "data"),"Selecione"
+                                                                                , new { @class = "form-control" })
+                <span asp-validation-for="ordem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

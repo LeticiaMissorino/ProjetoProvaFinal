@@ -1,0 +1,42 @@
+@model ProjetoFinal.Models.Ordem
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>Detalhes - Ordem</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.qdte)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qdte)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.produto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.produto.nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

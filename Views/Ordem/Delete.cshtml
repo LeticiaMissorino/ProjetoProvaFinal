@@ -1,0 +1,45 @@
+@model ProjetoFinal.Models.Ordem
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<div>
+    <dl class="dl-horizontal">
+         <h2>Deseja Excluir essa Ordem ?  </h2>
+         <hr />
+   
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.qdte)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qdte)
+        </dd>
+                <dt>
+            @Html.DisplayNameFor(model => model.cliente)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.produto.nome)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Excluir" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

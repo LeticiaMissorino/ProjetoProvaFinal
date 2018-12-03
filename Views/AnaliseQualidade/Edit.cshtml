@@ -1,0 +1,58 @@
+@model ProjetoFinal.Models.AnaliseQualidade
+
+@{
+    ViewData["Title"] = "Edição";
+}
+
+<h2>Editar - Analise de Qualidade</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="data" class="control-label"></label>
+                <input asp-for="data" class="form-control" />
+                <span asp-validation-for="data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="aprovado" /> @Html.DisplayNameFor(model => model.aprovado)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="responsavel" class="control-label"></label>
+                <input asp-for="responsavel" class="form-control" />
+                <span asp-validation-for="responsavel" class="text-danger"></span>
+            </div>
+             <label asp-for="ordem" class="control-label"></label>
+                 @Html.DropDownListFor(model => model.ordem, new SelectList(ViewBag.ordem, "ID", "data")
+                                                                                 .Select(drp => new SelectListItem{
+                                                                                Text = drp.Text,
+                                                                                Value = drp.Value,
+                                                                                Selected = ( Model != null) &&
+                                                                                (Model.ordem.ID == int.Parse(drp.Value))
+                                                                                }
+                                                                                )                                                                              
+                                                                       
+                                                                                , new { @class = "form-control" }
+                                                                                 )
+                <span asp-validation-for="ordem" class="text-danger"></span>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

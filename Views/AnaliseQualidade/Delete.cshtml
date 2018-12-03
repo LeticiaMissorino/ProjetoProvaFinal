@@ -1,0 +1,42 @@
+@model ProjetoFinal.Models.AnaliseQualidade
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<h3>Deseja Excluir essa Analise de Qualidade?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.aprovado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.aprovado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.responsavel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.responsavel)
+        </dd>
+          <dt>
+            @Html.DisplayNameFor(model => model.ordem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ordem.data)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Excluir" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

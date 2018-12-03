@@ -1,0 +1,43 @@
+@model ProjetoFinal.Models.Embalagem
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<h3>Deseja Excluir essa Embalagem?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+              <dt>
+            @Html.DisplayNameFor(model => model.tamanho)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tamanho)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.produto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.produto.nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fornecedor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fornecedor.nome)
+        </dd>
+  
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>
